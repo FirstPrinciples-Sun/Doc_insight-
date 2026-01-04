@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INSIGHT+ Knowledge Base (Master Edition 2025)</title>
+    <!-- Google Fonts: Kanit & Sarabun -->
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&family=Sarabun:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Sarabun', 'sans-serif'],
+                        display: ['Kanit', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#FEF2F2',
+                            100: '#FEE2E2',
+                            500: '#EF4444',
+                            600: '#DC2626',
+                            700: '#B91C1C',
+                            800: '#991B1B',
+                            900: '#7F1D1D',
+                        },
+                        gold: {
+                            400: '#FACC15',
+                            500: '#EAB308',
+                            600: '#CA8A04',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html { scroll-behavior: smooth; }
+        body { background-color: #FAFAFA; color: #333; }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Kanit', sans-serif; }
+        
+        .glass-header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        .glass-card {
+            background: white;
+            border: 1px solid #F3F4F6;
+            box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        .glass-card:hover {
+            box-shadow: 0 10px 25px -5px rgba(220, 38, 38, 0.1);
+            transform: translateY(-2px);
+            border-color: #FECACA;
+        }
+
+        .marker-highlight {
+            background: linear-gradient(120deg, #FEE2E2 0%, #FEE2E2 100%);
+            background-repeat: no-repeat;
+            background-size: 100% 40%;
+            background-position: 0 88%;
+        }
+
+        /* Action Button Style */
+        .btn-action {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            font-size: 0.875rem;
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+        .btn-action-primary { background-color: #DC2626; color: white; border: 1px solid #DC2626; }
+        .btn-action-primary:hover { background-color: #B91C1C; }
+        
+        .btn-action-outline { border: 1px solid #E5E7EB; color: #4B5563; background-color: white; }
+        .btn-action-outline:hover { border-color: #DC2626; color: #DC2626; background-color: #FEF2F2; }
+
+        .btn-action-blue { background-color: #2563EB; color: white; border: 1px solid #2563EB; }
+        .btn-action-blue:hover { background-color: #1D4ED8; }
+
+        /* Accordion Style */
+        details > summary {
+            list-style: none;
+            cursor: pointer;
+        }
+        details > summary::-webkit-details-marker {
+            display: none;
+        }
+        details[open] summary ~ * {
+            animation: sweep .3s ease-in-out;
+        }
+        @keyframes sweep {
+            0%    {opacity: 0; transform: translateY(-10px)}
+            100%  {opacity: 1; transform: translateY(0)}
+        }
+        
+        .custom-table th { background-color: #F9FAFB; color: #4B5563; font-family: 'Kanit', sans-serif; font-weight: 600; }
+        .custom-table td { vertical-align: top; }
+        .custom-table tr:hover td { background-color: #FEF2F2; }
+    </style>
+</head>
+<body class="antialiased selection:bg-brand-100 selection:text-brand-900">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 glass-header">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex items-center cursor-pointer" onclick="window.scrollTo(0,0)">
+                    <div class="w-10 h-10 bg-brand-600 rounded-xl flex items-center justify-center text-white font-display font-bold text-2xl mr-3 shadow-lg shadow-brand-200">I+</div>
+                    <div>
+                        <span class="font-display font-bold text-xl text-gray-900 tracking-tight block leading-none">INSIGHT<span class="text-brand-600">+</span></span>
+                        <span class="text-[10px] text-gray-500 uppercase tracking-widest font-semibold">Knowledge Base</span>
+                    </div>
+                </div>
+                <div class="hidden lg:flex space-x-1">
+                    <a href="#pillar1" class="px-4 py-2 text-sm font-medium text-gray-600 hover:text-brand-600 rounded-lg hover:bg-brand-50 transition">1. สวัสดิการรัฐ</a>
+                    <a href="#pillar2" class="px-4 py-2 text-sm font-medium text-gray-600 hover:text-brand-600 rounded-lg hover:bg-brand-50 transition">2. ประกัน & พรบ.</a>
+                    <a href="#pillar3" class="px-4 py-2 text-sm font-medium text-gray-600 hover:text-brand-600 rounded-lg hover:bg-brand-50 transition">3. ภาษี & หนี้</a>
+                    <a href="#special" class="px-4 py-2 text-sm font-medium text-brand-600 bg-brand-50 rounded-lg hover:bg-brand-100 transition"><i class="fa-solid fa-star mr-1"></i> สิทธิลับ</a>
+                </div>
+                <a href="https://docs.google.com/document/d/1DdBImzLv7cugm_kbplPBro_TnmHjjMDHz4Anvw2g_Uw/edit?usp=sharing" target="_blank" class="hidden md:flex items-center px-4 py-2 bg-blue-50 text-blue-700 text-sm font-bold rounded-lg hover:bg-blue-100 transition border border-blue-200 shadow-sm">
+                    <i class="fa-solid fa-file-word mr-2"></i> เอกสารฉบับเต็ม
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <header class="pt-32 pb-16 px-4 bg-white relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-full bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_70%,transparent_100%)] opacity-30 pointer-events-none"></div>
+        <div class="max-w-4xl mx-auto text-center relative z-10">
+            <span class="inline-block py-1 px-3 rounded-full bg-brand-50 text-brand-700 text-xs font-bold tracking-wider mb-6 border border-brand-100">UPDATED 2025 • COMPREHENSIVE EDITION</span>
+            <h1 class="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+                คู่มือสามัญประจำบ้าน <br>
+                <span class="text-brand-600">ฉบับปลดล็อกสิทธิที่ซ่อนอยู่</span>
+            </h1>
+            <p class="text-lg text-gray-600 font-light max-w-2xl mx-auto mb-10 leading-relaxed">
+                รวบรวมสิ่งที่ <strong class="text-gray-900">"คนไทยต้องรู้"</strong> ทั้งสวัสดิการพื้นฐาน และ <strong class="text-brand-600">สิทธิพิเศษ</strong> ที่รัฐจัดให้แต่คุณอาจไม่เคยรู้มาก่อน เพื่อให้ทุกคนเข้าถึงโอกาสอย่างเท่าเทียม
+            </p>
+            <div class="flex flex-wrap justify-center gap-4">
+                 <a href="#special" class="px-8 py-3 bg-brand-600 text-white font-bold rounded-xl shadow-lg shadow-brand-200 hover:bg-brand-700 transition transform hover:-translate-y-1">
+                    <i class="fa-solid fa-unlock-keyhole mr-2"></i> ดูสิทธิลับทันที
+                </a>
+                <a href="https://thaipoliceonline.go.th/" target="_blank" class="px-8 py-3 bg-gray-900 text-white font-bold rounded-xl hover:bg-gray-800 transition flex items-center shadow-lg">
+                    <i class="fa-solid fa-shield-halved mr-2"></i> แจ้งความออนไลน์
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-24">
+
+        <!-- PILLAR 1: STATE WELFARE -->
+        <section id="pillar1" class="scroll-mt-28">
+            <div class="flex items-center mb-8 border-b border-gray-200 pb-4">
+                <span class="text-5xl mr-4 opacity-20 font-display font-bold text-gray-300">01</span>
+                <div>
+                    <h2 class="text-3xl font-display font-bold text-gray-900">สิทธิพื้นฐานรัฐ (State Welfare)</h2>
+                    <p class="text-gray-500 mt-1">สิทธิรักษาพยาบาลที่ทุกคนมีติดตัว และประกันสังคม</p>
+                </div>
+            </div>
+
+            <div class="grid lg:grid-cols-12 gap-8">
+                <!-- 1. บัตรทอง -->
+                <div class="lg:col-span-8 space-y-6">
+                    <div class="glass-card rounded-2xl p-8 border-l-4 border-l-brand-500 relative">
+                        <div class="flex justify-between items-start mb-6">
+                            <div>
+                                <h3 class="text-2xl font-display font-bold text-gray-800">1. บัตรทอง (สิทธิ 30 บาท)</h3>
+                                <div class="text-sm text-gray-500 mt-1">สำหรับคนไทยทุกคนที่ไม่มีสวัสดิการข้าราชการหรือประกันสังคม</div>
+                            </div>
+                            <a href="https://eservices.nhso.go.th/eServices/" target="_blank" class="btn-action btn-action-outline text-xs">
+                                <i class="fa-solid fa-magnifying-glass mr-2"></i> ตรวจสอบสิทธิ
+                            </a>
+                        </div>
+
+                        <div class="space-y-6">
+                            <!-- Main Rights -->
+                            <div class="grid sm:grid-cols-2 gap-4">
+                                <div class="bg-brand-50 p-4 rounded-xl">
+                                    <h4 class="font-bold text-brand-800 mb-2"><i class="fa-solid fa-heart-pulse mr-1"></i> เจ็บป่วยทั่วไป/อุบัติเหตุ</h4>
+                                    <p class="text-sm text-gray-700">รักษาฟรี หรือจ่าย 30 บาท ที่สถานพยาบาลตามสิทธิ (ศูนย์อนามัย/รพ.รัฐ ใกล้บ้าน)</p>
+                                    <p class="text-xs text-gray-500 mt-2">*หากเป็นเหตุฉุกเฉินวิกฤต (UCEP) เข้า รพ.ไหนก็ได้ ฟรี 72 ชม. แรก</p>
+                                </div>
+                                <div class="bg-blue-50 p-4 rounded-xl">
+                                    <h4 class="font-bold text-blue-800 mb-2"><i class="fa-solid fa-ribbon mr-1"></i> โรคร้ายแรง (Cancer Anywhere)</h4>
+                                    <p class="text-sm text-gray-700">ผู้ป่วยมะเร็งรักษาได้ทุกที่ที่มีความพร้อม ไม่ต้องใช้ใบส่งตัว (ตามเงื่อนไขใหม่)</p>
+                                    <p class="text-xs text-gray-500 mt-2">*ต้องลงทะเบียนยืนยันตัวตนก่อนใช้สิทธิ</p>
+                                </div>
+                            </div>
+
+                            <!-- Details Accordion -->
+                            <details class="group bg-gray-50 rounded-xl border border-gray-200">
+                                <summary class="flex justify-between items-center font-medium cursor-pointer list-none p-4">
+                                    <span class="text-brand-700 font-bold"><i class="fa-solid fa-circle-info mr-2"></i> สิทธิประโยชน์เพิ่มเติม (สร้างเสริมสุขภาพ PPA)</span>
+                                    <span class="transition group-open:rotate-180"><i class="fa-solid fa-chevron-down"></i></span>
+                                </summary>
+                                <div class="text-gray-600 text-sm p-4 pt-0 border-t border-gray-200 mt-4">
+                                    <p class="mb-2 font-bold text-gray-800">รู้หรือไม่? คนมีประกันสังคม/ข้าราชการ ก็ใช้สิทธินี้ได้:</p>
+                                    <ul class="list-disc pl-5 space-y-2">
+                                        <li><strong>ฝากครรภ์:</strong> ฟรีค่าฝากครรภ์ ตรวจเลือด อัลตราซาวด์ และยาบำรุง</li>
+                                        <li><strong>รากฟันเทียมฟรี:</strong> สำหรับผู้สูงอายุที่สูญเสียฟันทั้งปาก (โครงการฟันเทียมพระราชทาน)</li>
+                                        <li><strong>วัคซีน:</strong> ไข้หวัดใหญ่ (กลุ่มเสี่ยง), มะเร็งปากมดลูก (HPV) ในเด็กหญิง</li>
+                                        <li><strong>แว่นตาเด็ก:</strong> ตรวจสายตาและรับแว่นตาฟรีสำหรับเด็กประถมที่มีปัญหา</li>
+                                        <li><strong>ยาคุมกำเนิด/ถุงยาง:</strong> รับฟรีที่ร้านยา/คลินิกที่เข้าร่วม (จองผ่านแอปเป๋าตัง)</li>
+                                        <li><strong>เลิกบุหรี่:</strong> รับยาช่วยเลิกบุหรี่ฟรี โทร 1600 หรือติดต่อคลินิกฟ้าใส</li>
+                                    </ul>
+                                </div>
+                            </details>
+
+                            <!-- ย้ายสิทธิ -->
+                            <div class="flex items-center justify-between bg-green-50 p-4 rounded-xl border border-green-100">
+                                <div class="text-sm text-green-800">
+                                    <strong>ย้ายโรงพยาบาลได้เอง:</strong> ย้ายสิทธิบัตรทองผ่านแอป <em>"ทางรัฐ"</em> หรือ LINE <em>@nhso</em> <br>
+                                    <span class="text-xs">อนุมัติทันที ใช้สิทธิได้เลย (เปลี่ยนได้ 4 ครั้ง/ปีงบประมาณ)</span>
+                                </div>
+                                <i class="fa-solid fa-mobile-screen text-2xl text-green-600"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 2. ประกันสังคม -->
+                    <div class="glass-card rounded-2xl p-8">
+                        <div class="flex justify-between items-center mb-6">
+                            <div>
+                                <h3 class="text-2xl font-display font-bold text-gray-800">2. ประกันสังคม (Social Security)</h3>
+                                <div class="text-sm text-gray-500">ภาคบังคับ (ม.33) / สมัครใจ (ม.39, ม.40)</div>
+                            </div>
+                            <a href="https://www.sso.go.th/wpr/" target="_blank" class="btn-action btn-action-primary text-xs">
+                                <i class="fa-solid fa-right-to-bracket mr-2"></i> เช็คยอดเงินสมทบ
+                            </a>
+                        </div>
+
+                        <!-- Unemployment -->
+                        <div class="mb-6 p-4 bg-orange-50 rounded-xl border border-orange-100">
+                            <h4 class="font-bold text-orange-800 mb-2 flex items-center"><i class="fa-solid fa-briefcase mr-2"></i> สิทธิกรณีว่างงาน (เฉพาะ ม.33)</h4>
+                            <div class="grid md:grid-cols-2 gap-4 text-sm">
+                                <div class="bg-white p-3 rounded shadow-sm">
+                                    <strong class="text-red-600">ถูกเลิกจ้าง</strong>
+                                    <p class="mt-1">ได้รับ <strong>50%</strong> ของค่าจ้าง (สูงสุด 15,000) นาน 180 วัน</p>
+                                </div>
+                                <div class="bg-white p-3 rounded shadow-sm">
+                                    <strong class="text-blue-600">ลาออก / สิ้นสุดสัญญา</strong>
+                                    <p class="mt-1">ได้รับ <strong>30%</strong> ของค่าจ้าง (สูงสุด 15,000) นาน 90 วัน</p>
+                                </div>
+                            </div>
+                            <div class="mt-3 text-xs text-orange-700">
+                                *ต้องขึ้นทะเบียนว่างงานที่ <a href="https://e-service.doe.go.th/" target="_blank" class="underline font-bold">เว็บกรมการจัดหางาน</a> ภายใน 30 วันหลังออกจากงาน
+                            </div>
+                        </div>
+
+                        <!-- Comparison Table -->
+                        <details class="group border border-gray-200 rounded-xl">
+                            <summary class="p-4 bg-gray-50 cursor-pointer font-bold text-gray-700 flex justify-between">
+                                <span>ตารางเปรียบเทียบ ม.33 vs ม.39 vs ม.40</span>
+                                <i class="fa-solid fa-chevron-down transition group-open:rotate-180"></i>
+                            </summary>
+                            <div class="p-4 overflow-x-auto">
+                                <table class="w-full text-sm text-left custom-table">
+                                    <thead class="text-gray-700 bg-gray-100 uppercase text-xs">
+                                        <tr>
+                                            <th class="px-4 py-3">หัวข้อ</th>
+                                            <th class="px-4 py-3 text-blue-700">ม.33 (ลูกจ้าง)</th>
+                                            <th class="px-4 py-3 text-green-700">ม.39 (ลาออกแล้วส่งต่อ)</th>
+                                            <th class="px-4 py-3 text-orange-700">ม.40 (อาชีพอิสระ)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="divide-y divide-gray-100 text-gray-600">
+                                        <tr>
+                                            <td class="px-4 py-3 font-medium">เงินสมทบ</td>
+                                            <td class="px-4 py-3">5% ของเงินเดือน (Max 750 บ.)</td>
+                                            <td class="px-4 py-3">432 บ./เดือน</td>
+                                            <td class="px-4 py-3">70 - 300 บ./เดือน</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="px-4 py-3 font-medium">รักษาพยาบาล</td>
+                                            <td class="px-4 py-3"><i class="fa-solid fa-check text-green-500"></i> ฟรีตามสิทธิ</td>
+                                            <td class="px-4 py-3"><i class="fa-solid fa-check text-green-500"></i> ฟรีตามสิทธิ</td>
+                                            <td class="px-4 py-3 text-red-500">ใช้สิทธิบัตรทอง</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="px-4 py-3 font-medium">ทำฟัน</td>
+                                            <td class="px-4 py-3">900 บ./ปี</td>
+                                            <td class="px-4 py-3">900 บ./ปี</td>
+                                            <td class="px-4 py-3">-</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="px-4 py-3 font-medium">ว่างงาน</td>
+                                            <td class="px-4 py-3"><i class="fa-solid fa-check text-green-500"></i> ได้รับ</td>
+                                            <td class="px-4 py-3">-</td>
+                                            <td class="px-4 py-3">-</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="px-4 py-3 font-medium">บำเหน็จ/บำนาญ</td>
+                                            <td class="px-4 py-3">ฐานเงินเดือนจริง (Max 15k)</td>
+                                            <td class="px-4 py-3">ฐาน 4,800 บ. (ทำให้บำนาญลดลงมาก)</td>
+                                            <td class="px-4 py-3">ได้เงินก้อนตามที่ส่ง</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <p class="text-xs text-red-500 mt-2">*ระวัง: หากเงินเดือนสูง การสมัคร ม.39 อาจทำให้ฐานบำนาญลดลงฮวบฮาบ (จากฐาน 15,000 เหลือ 4,800)</p>
+                            </div>
+                        </details>
+                    </div>
+                </div>
+
+                <!-- Sidebar: Elderly & Allowance -->
+                <div class="lg:col-span-4 space-y-6">
+                    <div class="glass-card rounded-2xl p-6 bg-gradient-to-b from-white to-gray-50 h-full flex flex-col">
+                        <h3 class="text-xl font-display font-bold text-gray-800 mb-4 pb-3 border-b">เบี้ยยังชีพ & ความพิการ</h3>
+                        
+                        <div class="bg-white rounded-xl p-4 shadow-sm border border-gray-100 mb-6">
+                            <h4 class="text-xs font-bold text-gray-400 uppercase mb-3">เบี้ยผู้สูงอายุ (แบบขั้นบันได)</h4>
+                            <div class="space-y-3">
+                                <div class="flex justify-between items-center text-sm"><span>60-69 ปี</span> <span class="font-bold">600 บ.</span></div>
+                                <div class="flex justify-between items-center text-sm"><span>70-79 ปี</span> <span class="font-bold">700 บ.</span></div>
+                                <div class="flex justify-between items-center text-sm"><span>80-89 ปี</span> <span class="font-bold">800 บ.</span></div>
+                                <div class="flex justify-between items-center text-sm"><span>90 ปี+</span> <span class="font-bold text-brand-600">1,000 บ.</span></div>
+                            </div>
+                        </div>
+
+                        <div class="space-y-4 text-sm text-gray-600 flex-grow">
+                            <div class="p-3 bg-red-50 rounded-lg border border-red-100">
+                                <strong class="text-red-700 block mb-1"><i class="fa-solid fa-calendar-days"></i> ช่วงเวลาลงทะเบียน:</strong>
+                                <p>1. ต.ค. - พ.ย. ของทุกปี</p>
+                                <p>2. ม.ค. - ก.ย. ของปีถัดไป</p>
+                                <p class="text-xs mt-1">*ต้องไปลงทะเบียนที่ อบต./เทศบาล/เขต ตามทะเบียนบ้าน <strong>ล่วงหน้า</strong> ก่อนอายุครบ 60</p>
+                            </div>
+                            
+                            <div class="pt-4 border-t border-gray-200">
+                                <h4 class="font-bold text-gray-900 mb-2">เงินสงเคราะห์ผู้มีรายได้น้อย</h4>
+                                <p class="text-xs mb-2">ช่วยเหลือเงินสดสูงสุด 3,000 บ. (ไม่เกิน 3 ครั้ง/ปี) กรณีเดือดร้อน ยากไร้ ไร้ที่พึ่ง</p>
+                                <a href="https://www.dsdw.go.th/" target="_blank" class="text-brand-600 underline text-xs">ติดต่อ พมจ. / กรมพัฒนาสังคมฯ</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SPECIAL PILLAR: HIDDEN RIGHTS (NEW) -->
+        <section id="special" class="scroll-mt-28">
+            <div class="flex items-center mb-8 border-b border-gray-200 pb-4">
+                <span class="text-5xl mr-4 opacity-20 font-display font-bold text-gold-500">★</span>
+                <div>
+                    <h2 class="text-3xl font-display font-bold text-gray-900">สิทธิลับฉบับคนวงใน (Hidden Rights)</h2>
+                    <p class="text-gray-500 mt-1">สิทธิประโยชน์ที่คนส่วนใหญ่ไม่รู้ว่า "มีอยู่จริง" และ "ขอได้ฟรี"</p>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Justice Fund -->
+                <div class="glass-card p-6 rounded-2xl border-t-4 border-t-blue-800">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-800"><i class="fa-solid fa-scale-balanced"></i></div>
+                        <h3 class="font-bold text-lg">กองทุนยุติธรรม</h3>
+                    </div>
+                    <p class="text-sm text-gray-600 mb-4">ถูกฟ้อง ไม่มีเงินจ้างทนาย หรือไม่มีเงินประกันตัว อย่าเพิ่งติดคุก! รัฐมีกองทุนช่วย</p>
+                    <ul class="text-xs space-y-2 mb-4 text-gray-700">
+                        <li>• ค่าจ้างทนายความ (ฟรี)</li>
+                        <li>• ค่าธรรมเนียมศาล (ฟรี)</li>
+                        <li>• เงินประกันตัว (ปล่อยชั่วคราว)</li>
+                    </ul>
+                    <a href="https://jfund.moj.go.th/" target="_blank" class="btn-action btn-action-outline w-full text-xs">ขอความช่วยเหลือ (ก.ยุติธรรม)</a>
+                </div>
+
+                <!-- Tenant Rights -->
+                <div class="glass-card p-6 rounded-2xl border-t-4 border-t-orange-500">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 rounded-full bg-orange-100 flex items-center justify-center text-orange-600"><i class="fa-solid fa-house-chimney"></i></div>
+                        <h3 class="font-bold text-lg">กฎหมายหอพักใหม่</h3>
+                    </div>
+                    <p class="text-sm text-gray-600 mb-4">ผู้เช่าต้องรู้! หากหอพักมีเกิน 5 ห้องพักขึ้นไป (เป็นธุรกิจควบคุมสัญญา)</p>
+                    <ul class="text-xs space-y-2 mb-4 text-gray-700">
+                        <li>• <strong class="text-red-600">ห้าม</strong> เก็บค่าไฟ/น้ำ แพงกว่าการไฟฟ้า/ประปา</li>
+                        <li>• <strong class="text-red-600">ห้าม</strong> เก็บมัดจำเกิน 1 เดือน</li>
+                        <li>• <strong class="text-red-600">ห้าม</strong> ล็อคห้อง/ยึดของ เมื่อค้างค่าเช่า (ต้องฟ้องขับไล่เท่านั้น)</li>
+                    </ul>
+                    <a href="https://www.ocpb.go.th/" target="_blank" class="btn-action btn-action-outline w-full text-xs">แจ้งร้องเรียน สคบ.</a>
+                </div>
+
+                 <!-- Skill Development -->
+                 <div class="glass-card p-6 rounded-2xl border-t-4 border-t-purple-600">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 rounded-full bg-purple-100 flex items-center justify-center text-purple-600"><i class="fa-solid fa-screwdriver-wrench"></i></div>
+                        <h3 class="font-bold text-lg">ฝึกอาชีพฟรี</h3>
+                    </div>
+                    <p class="text-sm text-gray-600 mb-4">กรมพัฒนาฝีมือแรงงาน มีคอร์สเรียนฟรี พร้อมที่พัก/อาหาร ในบางหลักสูตร</p>
+                    <ul class="text-xs space-y-2 mb-4 text-gray-700">
+                        <li>• ช่างซ่อมรถยนต์/แอร์/ไฟฟ้า</li>
+                        <li>• บาริสต้า / ทำอาหาร</li>
+                        <li>• ตัดต่อวิดีโอ / กราฟิก</li>
+                    </ul>
+                    <a href="https://www.dsd.go.th/" target="_blank" class="btn-action btn-action-outline w-full text-xs">ดูหลักสูตรเปิดรับ</a>
+                </div>
+
+                <!-- Debt Clinic -->
+                <div class="glass-card p-6 rounded-2xl border-t-4 border-t-green-600">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center text-green-600"><i class="fa-solid fa-money-bill-wave"></i></div>
+                        <h3 class="font-bold text-lg">คลินิกแก้หนี้ (SAM)</h3>
+                    </div>
+                    <p class="text-sm text-gray-600 mb-4">ทางรอดคนเป็นหนี้บัตรเสีย (NPL) รวมหนี้มาที่เดียว ดอกเบี้ยต่ำ ผ่อนนาน 10 ปี</p>
+                    <ul class="text-xs space-y-2 mb-4 text-gray-700">
+                        <li>• ดอกเบี้ยเพียง 3-5% ต่อปี</li>
+                        <li>• เปลี่ยนเจ้าหนี้ดุๆ เป็นเจ้าหนี้รัฐ</li>
+                        <li>• ห้ามก่อหนี้เพิ่มระหว่างโครงการ</li>
+                    </ul>
+                    <a href="https://www.debtclinicbysam.com/" target="_blank" class="btn-action btn-action-outline w-full text-xs">สมัครแก้หนี้</a>
+                </div>
+
+                <!-- Home Loan -->
+                <div class="glass-card p-6 rounded-2xl border-t-4 border-t-indigo-600">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-600"><i class="fa-solid fa-bed"></i></div>
+                        <h3 class="font-bold text-lg">บ้านล้านหลัง</h3>
+                    </div>
+                    <p class="text-sm text-gray-600 mb-4">โครงการ ธอส. ดอกเบี้ยคงที่ต่ำพิเศษ ผ่อนถูกกว่าเช่า</p>
+                    <ul class="text-xs space-y-2 mb-4 text-gray-700">
+                        <li>• ราคาบ้านไม่เกิน 1.5 ล้านบาท</li>
+                        <li>• ผ่อนเริ่มต้นเพียง 3,000-4,000 บ.</li>
+                        <li>• ฟรีค่าธรรมเนียมหลายรายการ</li>
+                    </ul>
+                    <a href="https://www.ghbank.co.th/" target="_blank" class="btn-action btn-action-outline w-full text-xs">ดูรายละเอียด ธอส.</a>
+                </div>
+
+                <!-- Disabled Rights -->
+                <div class="glass-card p-6 rounded-2xl border-t-4 border-t-pink-500">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 rounded-full bg-pink-100 flex items-center justify-center text-pink-600"><i class="fa-solid fa-wheelchair"></i></div>
+                        <h3 class="font-bold text-lg">สิทธิคนพิการ</h3>
+                    </div>
+                    <p class="text-sm text-gray-600 mb-4">นอกจากเบี้ย 800-1000 บ. ยังมีสิทธิอื่นอีกมาก</p>
+                    <ul class="text-xs space-y-2 mb-4 text-gray-700">
+                        <li>• <strong>ปรับสภาพบ้าน:</strong> งบ 40,000 บ. (ทำทางลาด/ห้องน้ำ)</li>
+                        <li>• <strong>เดินทางฟรี:</strong> BTS/MRT/รถไฟ/รถเมล์ (แสดงบัตร)</li>
+                        <li>• <strong>ยืมอุปกรณ์:</strong> วีลแชร์/เตียงคนไข้ (ศูนย์สิรินธรฯ)</li>
+                    </ul>
+                    <a href="https://dep.go.th/" target="_blank" class="btn-action btn-action-outline w-full text-xs">กรมส่งเสริมคนพิการ</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- PILLAR 2: INSURANCE & ACCIDENT (NEW EXPANDED) -->
+        <section id="pillar2" class="scroll-mt-28">
+            <div class="flex items-center mb-8 border-b border-gray-200 pb-4">
+                <span class="text-5xl mr-4 opacity-20 font-display font-bold text-gray-300">02</span>
+                <div>
+                    <h2 class="text-3xl font-display font-bold text-gray-900">ประกัน & พรบ. รถยนต์</h2>
+                    <p class="text-gray-500 mt-1">สิ่งที่ต้องรู้เมื่อเกิดเหตุ และการเลือกประกันสุขภาพ</p>
+                </div>
+            </div>
+
+            <!-- CAR ACCIDENT & POR ROR BOR -->
+            <div class="glass-card p-8 rounded-2xl mb-8 border-l-4 border-l-yellow-500">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6">
+                    <div>
+                        <h3 class="text-2xl font-display font-bold text-gray-800">1. พรบ. ภาคบังคับ (Compulsory Insurance)</h3>
+                        <p class="text-sm text-gray-500">รถทุกคันต้องมี! คุ้มครอง "คน" ไม่คุ้มครอง "รถ"</p>
+                    </div>
+                    <div class="mt-4 md:mt-0 px-4 py-2 bg-red-100 text-red-700 rounded-lg font-bold text-sm">
+                        โทรแจ้งเหตุ: 1791 (บริษัทกลางฯ)
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="space-y-4">
+                        <div class="bg-gray-50 p-4 rounded-xl">
+                            <h4 class="font-bold text-gray-900 mb-2">ค่าเสียหายเบื้องต้น (ไม่ต้องพิสูจน์ถูกผิด)</h4>
+                            <p class="text-sm text-gray-600 mb-2">จ่ายให้ทันทีภายใน 7 วัน เพื่อเยียวยา</p>
+                            <ul class="space-y-2 text-sm">
+                                <li class="flex justify-between border-b border-gray-200 pb-1"><span>ค่ารักษาพยาบาล (ตามจริง)</span> <span class="font-bold">ไม่เกิน 30,000 บ.</span></li>
+                                <li class="flex justify-between border-b border-gray-200 pb-1"><span>กรณีเสียชีวิต/ทุพพลภาพ</span> <span class="font-bold">35,000 บ.</span></li>
+                                <li class="flex justify-between bg-yellow-50 p-1 rounded"><span>รวมกันไม่เกิน</span> <span class="font-bold text-brand-600">65,000 บ.</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="bg-blue-50 p-4 rounded-xl border border-blue-100">
+                            <h4 class="font-bold text-blue-900 mb-2">ค่าสินไหมทดแทน (สำหรับฝ่ายถูก)</h4>
+                            <p class="text-sm text-blue-700 mb-2">จ่ายเพิ่มหลังจากพิสูจน์แล้วว่าเป็นฝ่ายถูก</p>
+                            <ul class="space-y-2 text-sm">
+                                <li class="flex justify-between border-b border-blue-200 pb-1"><span>ค่ารักษาพยาบาล (รวมเบื้องต้น)</span> <span class="font-bold">ไม่เกิน 80,000 บ.</span></li>
+                                <li class="flex justify-between border-b border-blue-200 pb-1"><span>เสียชีวิต/พิการถาวร</span> <span class="font-bold text-2xl text-blue-600">500,000 บ.</span></li>
+                                <li class="flex justify-between"><span>ชดเชยรายวัน (นอน รพ.)</span> <span class="font-bold">200 บ./วัน (Max 20 วัน)</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- HEALTH INSURANCE TRAPS -->
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="glass-card p-8 rounded-2xl">
+                    <h3 class="font-display font-bold text-xl text-gray-800 mb-6 flex items-center">
+                        <i class="fa-solid fa-book-medical text-brand-500 mr-3"></i> รู้ทันประกันสุขภาพ
+                    </h3>
+                    <div class="space-y-6">
+                        <div class="pl-4 border-l-2 border-brand-200">
+                            <h4 class="font-bold text-gray-900">เหมาจ่าย vs แยกค่าใช้จ่าย</h4>
+                            <p class="text-sm text-gray-600 mt-1">
+                                <strong>เหมาจ่าย (Lump Sum):</strong> วงเงินก้อนเดียว (เช่น 5 ล้าน) ตัดปัญหาค่าผ่าตัดเกินวงเงิน เหมาะกับยุคค่ารักษาแพง<br>
+                                <strong>แยกค่าใช้จ่าย (Split Limit):</strong> มีวงเงินย่อยๆ (เช่น ค่าผ่าตัด 40,000, ค่าห้อง 2,000) มักไม่พอจ่ายจริง เสี่ยงส่วนต่างบาน
+                            </p>
+                        </div>
+                        <div class="pl-4 border-l-2 border-brand-200">
+                            <h4 class="font-bold text-gray-900">Deductible (ความรับผิดส่วนแรก)</h4>
+                            <p class="text-sm text-gray-600 mt-1">
+                                หากคุณมีประกันสังคม/สวัสดิการบริษัท ให้เลือกแผนที่มี Deductible (เช่น 30,000 บาท) จะช่วย <span class="text-green-600 font-bold">ลดค่าเบี้ยประกันได้ 30-50%</span> โดยใช้สวัสดิการที่มีจ่ายส่วนแรกไปก่อน
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-card p-8 rounded-2xl bg-brand-50/30 border-brand-100">
+                    <h3 class="font-display font-bold text-xl text-brand-800 mb-6 flex items-center">
+                        <i class="fa-solid fa-triangle-exclamation text-brand-500 mr-3"></i> สิ่งที่ตัวแทนอาจไม่บอก
+                    </h3>
+                    <ul class="space-y-5 text-sm text-gray-700">
+                        <li class="flex gap-3">
+                            <span class="flex-shrink-0 w-6 h-6 bg-brand-100 text-brand-600 rounded-full flex items-center justify-center font-bold text-xs">1</span>
+                            <div>
+                                <strong>ระยะรอคอย (Waiting Period):</strong> โรคทั่วไป 30 วัน แต่โรคร้ายแรง/เรื้อรัง (ซีสต์, เนื้องอก, นิ่ว) ต้องรอ <strong>120 วัน</strong> ถึงจะเคลมได้
+                            </div>
+                        </li>
+                        <li class="flex gap-3">
+                            <span class="flex-shrink-0 w-6 h-6 bg-brand-100 text-brand-600 rounded-full flex items-center justify-center font-bold text-xs">2</span>
+                            <div>
+                                <strong>ประกันเด็ก (Simple Diseases):</strong> โรคฮิตในเด็ก (RSV, มือเท้าปาก, ท้องเสีย) ประกันบางเล่มเริ่มกำหนดระยะรอคอย 30 วัน และอาจมี Co-pay หากป่วยซ้ำๆ
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- PILLAR 3: TAX & DEBT -->
+        <section id="pillar3" class="scroll-mt-28">
+            <div class="flex items-center mb-8 border-b border-gray-200 pb-4">
+                <span class="text-5xl mr-4 opacity-20 font-display font-bold text-gray-300">03</span>
+                <div>
+                    <h2 class="text-3xl font-display font-bold text-gray-900">ภาษี & หนี้สิน (Tax & Debt)</h2>
+                    <p class="text-gray-500 mt-1">จัดการหนี้เสีย ตรวจเครดิตบูโร และวางแผนลดหย่อน</p>
+                </div>
+            </div>
+
+            <div class="grid lg:grid-cols-12 gap-8">
+                <!-- Tax Section -->
+                <div class="lg:col-span-7 glass-card p-8 rounded-2xl">
+                    <div class="flex justify-between items-center mb-6">
+                        <h3 class="font-display font-bold text-xl text-gray-800">Checklist ลดหย่อนภาษี 2568</h3>
+                        <a href="https://efiling.rd.go.th/" target="_blank" class="btn-action btn-action-blue text-xs">
+                            ยื่นภาษีออนไลน์
+                        </a>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <div class="bg-gray-50 p-4 rounded-xl border border-gray-100">
+                            <h4 class="font-bold text-gray-700 mb-2 border-b pb-2">1. กลุ่มพื้นฐาน (มีทุกคน)</h4>
+                            <div class="grid grid-cols-2 gap-2 text-sm">
+                                <div>ส่วนตัว: <span class="font-bold">60,000</span></div>
+                                <div>ประกันสังคม: <span class="font-bold">ตามจริง (Max 9,000)</span></div>
+                                <div>คู่สมรส (ไม่มีรายได้): <span class="font-bold">60,000</span></div>
+                                <div>บุตร: <span class="font-bold">30,000/คน (คนที่ 2 ได้ 60k)</span></div>
+                            </div>
+                        </div>
+
+                        <div class="bg-gray-50 p-4 rounded-xl border border-gray-100">
+                            <h4 class="font-bold text-gray-700 mb-2 border-b pb-2">2. กลุ่มประกัน & ออมเงิน</h4>
+                            <ul class="space-y-2 text-sm text-gray-600">
+                                <li class="flex justify-between"><span>ประกันชีวิตทั่วไป (10 ปี+)</span> <b>100,000</b></li>
+                                <li class="flex justify-between"><span>ประกันสุขภาพ</span> <b>25,000</b></li>
+                                <li class="text-xs text-red-500 text-right">*สองข้อบนรวมกันไม่เกิน 100,000</li>
+                                <li class="flex justify-between border-t pt-1"><span>ประกันสุขภาพพ่อแม่</span> <b>15,000</b></li>
+                            </ul>
+                        </div>
+
+                        <div class="bg-green-50 p-4 rounded-xl border border-green-100">
+                            <h4 class="font-bold text-green-800 mb-2 border-b border-green-200 pb-2">3. กองทุนลดหย่อน (SSF/RMF/ThaiESG)</h4>
+                            <div class="space-y-3 text-sm">
+                                <div>
+                                    <div class="flex justify-between font-bold"><span>SSF (ระยะยาว 10 ปี)</span> <span>Max 30% ไม่เกิน 2 แสน</span></div>
+                                    <p class="text-xs text-gray-500">สำหรับคนอายุน้อย เน้นเก็บยาว</p>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between font-bold"><span>RMF (เกษียณ 55 ปี)</span> <span>Max 30% ไม่เกิน 5 แสน</span></div>
+                                    <p class="text-xs text-gray-500">สำหรับคนใกล้เกษียณ หรือต้องการยืดหยุ่น</p>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between font-bold text-brand-600"><span>ThaiESG (รักษ์โลก)</span> <span>Max 30% ไม่เกิน 3 แสน</span></div>
+                                    <p class="text-xs text-gray-500">ลดหย่อนเพิ่ม! แยกวงเงินจาก SSF/RMF ถือ 5 ปี</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Debt & Credit Bureau Section -->
+                <div class="lg:col-span-5 space-y-6">
+                    <div class="glass-card p-6 rounded-2xl bg-gray-900 text-white relative overflow-hidden">
+                        <div class="relative z-10">
+                            <h3 class="font-display font-bold text-xl mb-2">ตรวจเครดิตบูโร (NCB)</h3>
+                            <p class="text-gray-400 text-sm mb-4">รู้สถานะหนี้ก่อนกู้บ้าน/รถ ไม่ให้โดนปฏิเสธ</p>
+                            <ul class="text-sm space-y-2 mb-6">
+                                <li>• ผ่านแอปธนาคาร (KMA, Krungthai Next, ttb touch)</li>
+                                <li>• ตู้ Kiosk ตามสถานี BTS</li>
+                                <li>• ที่ทำการไปรษณีย์ไทย</li>
+                            </ul>
+                            <a href="https://www.ncb.co.th/check-your-credit-bureau/where-to-check-credit-bureau" target="_blank" class="btn-action bg-white text-gray-900 w-full hover:bg-gray-200">
+                                ดูจุดให้บริการทั้งหมด
+                            </a>
+                        </div>
+                        <div class="absolute right-0 bottom-0 opacity-10 text-9xl">
+                            <i class="fa-solid fa-building-columns"></i>
+                        </div>
+                    </div>
+
+                    <div class="glass-card p-6 rounded-2xl border-l-4 border-l-orange-500">
+                        <h3 class="font-display font-bold text-lg text-gray-800 mb-2">เป็นหนี้เสีย ทำไงดี?</h3>
+                        <p class="text-sm text-gray-600 mb-4">อย่าหนี! เข้าโครงการแก้หนี้ภาครัฐ ดอกเบี้ยถูก ผ่อนยาว</p>
+                        
+                        <div class="space-y-3">
+                            <div class="p-3 bg-orange-50 rounded-lg">
+                                <strong class="block text-orange-800 text-sm">คลินิกแก้หนี้ (SAM)</strong>
+                                <p class="text-xs text-gray-600">สำหรับหนี้บัตร/สินเชื่อส่วนบุคคลที่เป็น NPL แล้ว</p>
+                                <a href="https://www.debtclinicbysam.com/" target="_blank" class="text-brand-600 text-xs font-bold underline mt-1 inline-block">สมัครเข้าโครงการ ></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PILLAR 4: CONSUMER PROTECTION & FRAUD -->
+        <section id="pillar4" class="scroll-mt-28 mb-24">
+            <div class="flex items-center mb-8 border-b border-gray-200 pb-4">
+                <span class="text-5xl mr-4 opacity-20 font-display font-bold text-gray-300">04</span>
+                <div>
+                    <h2 class="text-3xl font-display font-bold text-gray-900">เตือนภัย & คุ้มครองผู้บริโภค</h2>
+                    <p class="text-gray-500 mt-1">วิธีรับมือมิจฉาชีพ และสิทธิการคืนสินค้า/ประกัน</p>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Fraud Prevention -->
+                <div class="glass-card p-8 rounded-2xl border-t-4 border-t-red-600">
+                    <h3 class="font-display font-bold text-xl text-red-700 mb-4"><i class="fa-solid fa-user-shield mr-2"></i> โดนโกงออนไลน์ ต้องทำไง?</h3>
+                    <div class="space-y-4">
+                        <div class="flex gap-3 items-start">
+                            <div class="w-8 h-8 rounded-full bg-red-100 text-red-600 flex items-center justify-center font-bold flex-shrink-0">1</div>
+                            <div>
+                                <strong class="block text-gray-900 text-sm">โทรอายัดบัญชีทันที (ภายใน 24 ชม.)</strong>
+                                <p class="text-xs text-gray-600 mt-1">โทรเข้า Call Center ธนาคารเจ้าของบัญชีเรา หรือกด 1441 (ศูนย์ AOC)</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-3 items-start">
+                            <div class="w-8 h-8 rounded-full bg-red-100 text-red-600 flex items-center justify-center font-bold flex-shrink-0">2</div>
+                            <div>
+                                <strong class="block text-gray-900 text-sm">แจ้งความออนไลน์</strong>
+                                <p class="text-xs text-gray-600 mt-1">ที่เว็บ <a href="https://thaipoliceonline.go.th" class="text-blue-600 underline">thaipoliceonline.go.th</a> เท่านั้น (ระวังเว็บปลอม!)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Insurance Cancellation -->
+                <div class="glass-card p-8 rounded-2xl border-t-4 border-t-purple-500">
+                    <h3 class="font-display font-bold text-xl text-purple-800 mb-4">เปลี่ยนใจ คืนประกันได้ (Free-look)</h3>
+                    <p class="text-sm text-gray-600 mb-6">กฎหมายคุ้มครองให้เรายกเลิกกรมธรรม์ได้ หากอ่านเงื่อนไขแล้วไม่พอใจ หรือถูกหลอกขาย</p>
+                    
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center p-3 bg-purple-50 rounded-lg text-sm">
+                            <span>ซื้อผ่านตัวแทน/ธนาคาร</span>
+                            <span class="font-bold text-purple-700">ภายใน 15 วัน</span>
+                        </div>
+                        <div class="flex justify-between items-center p-3 bg-purple-50 rounded-lg text-sm">
+                            <span>ซื้อผ่านโทรศัพท์ (Telesales)</span>
+                            <span class="font-bold text-purple-700">ภายใน 30 วัน</span>
+                        </div>
+                        <p class="text-xs text-gray-400 mt-2 text-right">*นับจากวันที่ได้รับเล่ม (อาจมีค่าธรรมเนียมฉบับละ 500 บ.)</p>
+                    </div>
+
+                    <div class="mt-6 pt-4 border-t border-gray-100 grid grid-cols-2 gap-3">
+                        <a href="https://www.oic.or.th/" target="_blank" class="text-center p-2 rounded hover:bg-gray-50 border border-gray-200 text-xs">
+                            <span class="block font-bold text-gray-800">1186</span> สายด่วน คปภ.
+                        </a>
+                        <a href="https://www.1213.or.th/" target="_blank" class="text-center p-2 rounded hover:bg-gray-50 border border-gray-200 text-xs">
+                            <span class="block font-bold text-gray-800">1213</span> ศูนย์คุ้มครองฯ ธปท.
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- EMERGENCY HUB -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-display font-bold text-gray-900 mb-6 text-center">เบอร์โทรฉุกเฉินที่ต้องมีติดเครื่อง</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <a href="tel:1669" class="bg-red-600 text-white p-4 rounded-xl text-center hover:bg-red-700 transition">
+                    <i class="fa-solid fa-truck-medical text-2xl mb-2"></i>
+                    <div class="font-bold text-xl">1669</div>
+                    <div class="text-xs">เจ็บป่วยฉุกเฉิน</div>
+                </a>
+                <a href="tel:191" class="bg-gray-800 text-white p-4 rounded-xl text-center hover:bg-gray-900 transition">
+                    <i class="fa-solid fa-person-military-pointing text-2xl mb-2"></i>
+                    <div class="font-bold text-xl">191</div>
+                    <div class="text-xs">เหตุด่วนเหตุร้าย</div>
+                </a>
+                <a href="tel:1197" class="bg-blue-600 text-white p-4 rounded-xl text-center hover:bg-blue-700 transition">
+                    <i class="fa-solid fa-car-burst text-2xl mb-2"></i>
+                    <div class="font-bold text-xl">1197</div>
+                    <div class="text-xs">อุบัติเหตุจราจร</div>
+                </a>
+                <a href="tel:1441" class="bg-orange-500 text-white p-4 rounded-xl text-center hover:bg-orange-600 transition">
+                    <i class="fa-solid fa-handcuffs text-2xl mb-2"></i>
+                    <div class="font-bold text-xl">1441</div>
+                    <div class="text-xs">ศูนย์ปราบโกง (AOC)</div>
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-gray-900 text-white py-12 border-t border-gray-800 relative">
+        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-brand-500 via-gold-500 to-brand-500"></div>
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            
+            <div class="mb-8 p-6 bg-gray-800 rounded-2xl inline-block max-w-2xl mx-auto border border-gray-700">
+                <p class="text-gray-300 italic font-light mb-4 text-lg">
+                    "จัดทำขึ้นเพื่อเป็น <span class="text-gold-400 font-bold">'เกราะป้องกันทางปัญญา'</span> ให้คนไทยทุกคนเข้าถึงสิทธิที่พึงมี อย่างเท่าเทียมและสง่างาม"
+                </p>
+                <div class="text-white font-display font-bold">
+                    นาย ชนะพล สมานมิตร
+                </div>
+                <div class="text-gray-500 text-xs uppercase tracking-widest mt-1">
+                    ผู้จัดทำและรวบรวมข้อมูล
+                </div>
+            </div>
+
+            <p class="text-gray-500 text-xs mb-8">
+                ข้อมูลนี้รวบรวมเพื่อสาธารณประโยชน์ โปรดตรวจสอบเงื่อนไขปัจจุบันกับหน่วยงานที่เกี่ยวข้องอีกครั้ง
+            </p>
+            
+            <a href="https://docs.google.com/document/d/1DdBImzLv7cugm_kbplPBro_TnmHjjMDHz4Anvw2g_Uw/edit?usp=sharing" target="_blank" class="inline-flex items-center px-6 py-3 bg-brand-600 text-white font-bold rounded-full hover:bg-brand-700 transition shadow-lg mb-8">
+                <i class="fa-solid fa-book-open mr-2"></i> อ่านเอกสารต้นฉบับ (Google Docs)
+            </a>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-xs text-gray-500 mt-8 text-left max-w-3xl mx-auto border-t border-gray-800 pt-8">
+                <div>
+                    <strong class="text-gray-300 block mb-2">สวัสดิการ</strong>
+                    <ul>
+                        <li><a href="https://www.nhso.go.th" class="hover:text-white">สปสช. (บัตรทอง)</a></li>
+                        <li><a href="https://www.sso.go.th" class="hover:text-white">ประกันสังคม</a></li>
+                        <li><a href="https://www.dop.go.th" class="hover:text-white">กรมกิจการผู้สูงอายุ</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <strong class="text-gray-300 block mb-2">ประกัน/การเงิน</strong>
+                    <ul>
+                        <li><a href="https://www.oic.or.th" class="hover:text-white">คปภ. (ประกันภัย)</a></li>
+                        <li><a href="https://www.rd.go.th" class="hover:text-white">กรมสรรพากร</a></li>
+                        <li><a href="https://www.ncb.co.th" class="hover:text-white">เครดิตบูโร</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <strong class="text-gray-300 block mb-2">ร้องเรียน/ช่วยเหลือ</strong>
+                    <ul>
+                        <li><a href="https://thaipoliceonline.go.th" class="hover:text-white">แจ้งความออนไลน์</a></li>
+                        <li><a href="https://www.ocpb.go.th" class="hover:text-white">สคบ.</a></li>
+                        <li><a href="https://www.1213.or.th" class="hover:text-white">ศูนย์คุ้มครองฯ ธปท.</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <strong class="text-gray-300 block mb-2">เกี่ยวกับ</strong>
+                    <p>INSIGHT+ Knowledge Base <br> Master Edition 2025</p>
+                </div>
+            </div>
+            
+            <div class="mt-8 pt-8 text-xs text-gray-600 border-t border-gray-800">
+                &copy; 2025 INSIGHT+ Knowledge Base. Reference from Structure Document.
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
